@@ -1,0 +1,17 @@
+services:
+  database_cpo:
+    image: postgres
+    container_name: database_cpo
+    restart: always
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=cpos
+      - POSTGRES_DB=caparao
+    volumes:
+      - pgdata:/data/postgres
+
+volumes:
+  pgdata:
+    driver: local
