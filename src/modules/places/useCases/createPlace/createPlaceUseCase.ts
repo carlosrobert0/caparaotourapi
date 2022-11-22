@@ -1,19 +1,20 @@
 import { prisma } from "../../../../database/prismaClient"
 import { hash } from 'bcrypt'
 
-interface ICreatePlace {
+interface CreatePlace {
   name: string;
   image: string;
   description: string;
   category_id: string;
   address_id: string;
+  city_id: string;
 }
 
 
 export class CreatePlaceUseCase {
   async execute({
-    name, image, description, category_id, address_id
-  }: ICreatePlace) {
+    name, image, description, category_id, address_id, city_id
+  }: CreatePlace) {
     const placeExists = await prisma.places.findFirst({
       where: {
         name: {
@@ -33,8 +34,9 @@ export class CreatePlaceUseCase {
         image,
         description,
         category_id,
-        address_id
-      }
+        address_id,
+        city_id
+      } as CreatePlace
     })
 
     return place

@@ -4,7 +4,10 @@ export class FindPlaceByNameUseCase {
   async execute(name: any) {
     const placeByName = await prisma.places.findFirst({
       where: {
-        name
+        name: {
+          equals: name,
+          mode: "insensitive"
+        }
       }
     })
 

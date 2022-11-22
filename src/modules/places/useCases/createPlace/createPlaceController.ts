@@ -4,7 +4,7 @@ import { CreatePlaceUseCase } from "./createPlaceUseCase";
 export class CreatePlaceController {
   async handle(request: Request, response: Response) {
     const {
-      name, image, description, category_id, address_id
+      name, image, description, category_id, address_id, city_id
     } = request.body;
 
     const createPlaceUseCase = new CreatePlaceUseCase()
@@ -13,7 +13,8 @@ export class CreatePlaceController {
       image,
       description,
       category_id,
-      address_id
+      address_id,
+      city_id
     })
 
     return response.json(result)

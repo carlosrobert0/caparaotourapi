@@ -32,10 +32,11 @@ model Categories {
 }
 
 model Cities {
-  id          String @id @default(uuid())
-  name        String
+  id          String   @id @default(uuid())
+  name        String   
   image       String
   description String
+  places      Places[]
 
   @@map("cities")
 }
@@ -60,6 +61,9 @@ model Places {
   category    Categories @relation(fields: [category_id], references: [id])
   address_id  String     @unique
   address     Addresses  @relation(fields: [address_id], references: [id])
+
+  city     Cities? @relation(fields: [city_id], references: [id])
+  city_id  String?
 
   @@map("places")
 }

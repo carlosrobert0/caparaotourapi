@@ -12,6 +12,7 @@ import { FindAllCategoriesController } from "./modules/categories/useCases/findA
 import { FindCityByNameController } from "./modules/cities/useCases/findCityByName/findCityByNameController";
 import { FindAllPlacesController } from "./modules/places/useCases/findAllPlaces/findAllPlacesController";
 import { FindPlaceByNameController } from "./modules/places/useCases/findPlaceByName/findPlaceByNameController";
+import { FindAllAddressesController } from "./modules/addresses/useCases/findAllAddresses/findAllAddressesController";
 
 const routes = Router()
 
@@ -26,6 +27,7 @@ const findAllCategoriesController = new FindAllCategoriesController()
 const findCityByNameController = new FindCityByNameController()
 const findAllPlacesController = new FindAllPlacesController()
 const findPlaceByNameController = new FindPlaceByNameController()
+const findAllAddressesController = new FindAllAddressesController()
 
 routes.post("/authenticate/", authenticateController.handle)
 
@@ -36,6 +38,8 @@ routes.get("/cities/", ensureAuthenticateUser, findAllCitiesController.handle)
 routes.get("/cities/:name", ensureAuthenticateUser, findCityByNameController.handle)
 
 routes.post("/address/", ensureAuthenticateUser, createAddressController.handle)
+routes.get("/addresses/", ensureAuthenticateUser, findAllAddressesController.handle)
+
 
 routes.post("/category/", ensureAuthenticateUser, createCategoryController.handle)
 routes.get("/categories/", ensureAuthenticateUser, findAllCategoriesController.handle)
