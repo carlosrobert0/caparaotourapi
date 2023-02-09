@@ -3,7 +3,7 @@ import { hash } from 'bcrypt'
 
 interface ICreateCity {
   name: string;
-  image: string;
+  image: string | any;
   description: string;
 }
 
@@ -12,6 +12,8 @@ export class CreateCityUseCase {
   async execute({
     name, image, description
   }: ICreateCity) {
+    console.log('eaeeee', typeof image)
+
     const cityExists = await prisma.cities.findFirst({
       where: {
         name: {

@@ -8,6 +8,9 @@ export class FindPlaceByNameUseCase {
           equals: name,
           mode: "insensitive"
         }
+      },
+      include: {
+        address: true
       }
     })
 
