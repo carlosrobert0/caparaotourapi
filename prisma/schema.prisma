@@ -24,6 +24,7 @@ model Users {
 model Categories {
   id         String   @id @default(uuid())
   name       String
+  image      String?
   created_at DateTime @default(now())
   updated_at DateTime @default(now())
   Places     Places[]
@@ -33,7 +34,7 @@ model Categories {
 
 model Cities {
   id          String   @id @default(uuid())
-  name        String   
+  name        String
   image       String
   description String
   places      Places[]
@@ -62,8 +63,8 @@ model Places {
   address_id  String     @unique
   address     Addresses  @relation(fields: [address_id], references: [id])
 
-  city     Cities? @relation(fields: [city_id], references: [id])
-  city_id  String?
+  city    Cities? @relation(fields: [city_id], references: [id])
+  city_id String?
 
   @@map("places")
 }
