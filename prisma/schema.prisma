@@ -33,11 +33,12 @@ model Categories {
 }
 
 model Cities {
-  id          String   @id @default(uuid())
+  id          String        @id @default(uuid())
   name        String
   image       String
   description String
   places      Places[]
+  Depositions Depositions[]
 
   @@map("cities")
 }
@@ -63,8 +64,22 @@ model Places {
   address_id  String     @unique
   address     Addresses  @relation(fields: [address_id], references: [id])
 
-  city    Cities? @relation(fields: [city_id], references: [id])
-  city_id String?
+  city        Cities?       @relation(fields: [city_id], references: [id])
+  city_id     String?
+  Depositions Depositions[]
 
   @@map("places")
+}
+
+model Depositions {
+  id          String  @id @default(uuid())
+  name        String
+  avatar      String?
+  description String
+  city        Cities? @relation(fields: [city_id], references: [id])
+  city_id     String?
+  place       Places? @relation(fields: [place_id], references: [id])
+  place_id    String?
+
+  @@map("depositions")
 }
