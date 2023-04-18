@@ -15,8 +15,8 @@ const findCityByIdController = new FindCityByIdController()
 const deleteCityByIdController = new DeleteCityByIdController()
 
 citiesRoutes.post("/city/", ensureAuthenticateUser, createCityController.handle)
-citiesRoutes.get("/cities/", ensureAuthenticateUser, findAllCitiesController.handle)
-citiesRoutes.get("/cities/:id", ensureAuthenticateUser, findCityByIdController.handle)
+citiesRoutes.get("/cities/", findAllCitiesController.handle)
+citiesRoutes.get("/cities/:id", findCityByIdController.handle)
 citiesRoutes.delete("/cities/:id", ensureAuthenticateUser, deleteCityByIdController.handle)
 
 export { citiesRoutes }
