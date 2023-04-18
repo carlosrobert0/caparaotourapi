@@ -15,8 +15,9 @@ const findPlaceByNameController = new FindPlaceByNameController()
 const deletePlaceByIdController = new DeletePlaceByIdController()
 
 placesRoutes.post("/place/", ensureAuthenticateUser, createPlaceController.handle)
-placesRoutes.get("/places/", ensureAuthenticateUser, findAllPlacesController.handle)
-placesRoutes.get("/places/:name", ensureAuthenticateUser, findPlaceByNameController.handle)
+placesRoutes.get("/places/", findAllPlacesController.handle)
+placesRoutes.get("/places/:name", findPlaceByNameController.handle)
 placesRoutes.delete("/places/:id", ensureAuthenticateUser, deletePlaceByIdController.handle)
 
 export { placesRoutes }
+
