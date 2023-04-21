@@ -7,8 +7,11 @@ export class FindCategoryByIdUseCase {
         id: {
           equals: id,
           mode: "insensitive",
-        }
+        },
       },
+      include: {
+        Places: true
+      }
     })
 
     return category

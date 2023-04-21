@@ -12,7 +12,7 @@ const findAllCategoriesController = new FindAllCategoriesController()
 const findCategoryByIdController = new FindCategoryByIdController()
 
 categoriesRoutes.post("/category/", ensureAuthenticateUser, createCategoryController.handle)
-categoriesRoutes.get("/categories/", ensureAuthenticateUser, findAllCategoriesController.handle)
-categoriesRoutes.get("/category/:id", ensureAuthenticateUser, findCategoryByIdController.handle)
+categoriesRoutes.get("/categories/", findAllCategoriesController.handle)
+categoriesRoutes.get("/category/:id", findCategoryByIdController.handle)
 
 export { categoriesRoutes }
