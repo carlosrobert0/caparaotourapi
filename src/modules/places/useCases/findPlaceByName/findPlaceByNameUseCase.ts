@@ -10,8 +10,9 @@ export class FindPlaceByNameUseCase {
         }
       },
       include: {
-        address: true
-      }
+        address: true,
+        category: true
+      },
     })
 
     return placeByName
