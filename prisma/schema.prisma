@@ -77,6 +77,7 @@ model Depositions {
   avatar      String?
   description String
   status      String
+  avaliation  Int?
   city        Cities? @relation(fields: [city_id], references: [id])
   city_id     String?
   place       Places? @relation(fields: [place_id], references: [id])
