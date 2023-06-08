@@ -9,6 +9,7 @@ export class FindPlaceByIdUseCase {
       include: {
         address: true,
         category: true,
+        Depositions: true,
       },
     })
 

@@ -3,7 +3,7 @@ import { FindPlaceByIdUseCase } from "./findPlaceByIdUseCase";
 
 export class FindPlaceByIdController {
   async handle(request: Request, response: Response) {
-    const { id } = request.query
+    const { id } = request.params
     const findPlaceById = new FindPlaceByIdUseCase()
     const result = await findPlaceById.execute(id)
 

@@ -7,12 +7,13 @@ interface CreateDeposition {
   status: string;
   city_id: string;
   place_id: string;
+  avaliation?: number;
 }
 
 
 export class CreateDepositionUseCase {
   async execute({
-    name, avatar, description, status, place_id, city_id
+    name, avatar, description, status, place_id, city_id, avaliation
   }: CreateDeposition) {
     const deposition = await prisma.depositions.create({
       data: {
@@ -21,7 +22,8 @@ export class CreateDepositionUseCase {
         description,
         status,
         place_id,
-        city_id
+        city_id,
+        avaliation
       } as CreateDeposition
     })
 

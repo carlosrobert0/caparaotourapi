@@ -4,7 +4,7 @@ import { CreateDepositionUseCase } from "./createDepositionUseCase";
 export class CreateDepositionController {
   async handle(request: Request, response: Response) {
     const {
-      name, avatar, description, status, place_id, city_id
+      name, avatar, description, status, place_id, city_id, avaliation
     } = request.body;
 
     const createDepositionUseCase = new CreateDepositionUseCase()
@@ -14,7 +14,8 @@ export class CreateDepositionController {
       description,
       status,
       place_id,
-      city_id
+      city_id,
+      avaliation
     })
 
     return response.json(result)
