@@ -4,7 +4,8 @@ export class FindAllPlacesUseCase {
   async execute() {
     const places = await prisma.places.findMany({
       include: {
-        category: true
+        category: true,
+        // Depositions: true
       }
     })
 

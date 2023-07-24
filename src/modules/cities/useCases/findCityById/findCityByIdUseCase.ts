@@ -7,7 +7,12 @@ export class FindCityByIdUseCase {
         id
       },
       include: {
-        places: true
+        places: {
+          include: {
+            category: true,
+            Depositions: true,
+          }
+        }
       }
     })
 
